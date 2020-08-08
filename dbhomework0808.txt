@@ -1,0 +1,100 @@
+create database dbhomework0808 default character set utf8;
+use dbhomework0808;
+
+--
+--
+
+DROP TABLE IF EXISTS `order details`;
+CREATE TABLE `order details` 
+(
+  OrderID int(11) NOT NULL default '0',
+  MenuID int(11) NOT NULL default '0',
+  UnitPrice decimal(19,4) NOT NULL default '0.00',
+  Quantity smallint(6) NOT NULL default '0',
+  Discount float NOT NULL default '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--
+--
+ALTER TABLE `order details` DISABLE KEYS;
+INSERT INTO `order details` VALUES 
+(01,101,'70',1,0),(02,202,'75',2,0),(03,202,'75',2,0),(04,203,'75',2,0),(05,105,'75',2,0);
+ALTER TABLE `order details` ENABLE KEYS;
+--
+--
+
+
+
+DROP TABLE IF EXISTS `employees`;
+CREATE TABLE employees 
+(
+  EmployeeID int(11) NOT NULL default '0',
+  Name varchar(20) NOT NULL default '',
+  Country varchar(15) default NULL
+) ENGINE=InnoDB DEFAULT CHARSET = utf8;
+--
+--
+ALTER TABLE employees DISABLE KEYS ;
+INSERT INTO employees VALUES (555,'詹五伍','台中');
+INSERT INTO employees VALUES (666,'詹六六','台中');
+INSERT INTO employees VALUES (777,'詹七七','台中');
+INSERT INTO employees VALUES (888,'詹八八','台中');
+INSERT INTO employees VALUES (999,'詹九九','台中');
+ALTER TABLE employees ENABLE KEYS ;
+
+--
+--
+
+CREATE TABLE orders 
+(
+  OrderID int(11) NOT NULL default '0',
+  EmployeeID int(11) default NULL,
+  OrderDate datetime default NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--
+--
+ALTER TABLE orders DISABLE KEYS ;
+INSERT INTO orders VALUES (01,555,'2020-08-08 08:08:08');
+INSERT INTO orders VALUES (01,666,'2020-08-08 08:08:08');
+INSERT INTO orders VALUES (02,777,'2020-08-08 08:08:08');
+INSERT INTO orders VALUES (05,888,'2020-08-08 08:08:08');
+INSERT INTO orders VALUES (05,999,'2020-08-08 08:08:08');
+ALTER TABLE orders ENABLE KEYS ;
+
+--
+--
+
+DROP TABLE IF EXISTS `Menus`;
+CREATE TABLE Menus 
+(
+  MenuID int(11) NOT NULL default '0',
+  MenuName varchar(40) NOT NULL default '',
+  UnitPrice decimal(19,4) default NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+--
+
+ALTER TABLE Menus DISABLE KEYS ;
+INSERT INTO Menus VALUES (101,'鍋燒意麵','70'),(102,'鍋燒烏龍麵','75'),(103,'鍋燒雞絲麵','75'),(104,'鍋燒米粉','75'),(105,'鍋燒冬粉','85');
+INSERT INTO Menus VALUES (201,'皮蛋瘦肉粥','50'),(202,'雞丁香菇粥','55'),(203,'火腿玉米粥','55'),(204,'廣東粥','55'),(205,'鮮魚粥','65');
+ALTER TABLE Menus ENABLE KEYS ;
+
+--
+--
+
+DROP TABLE IF EXISTS `restaurants`;
+CREATE TABLE restaurants (
+  restaurantID int(11) NOT NULL default '0',
+  restaurantName varchar(40) NOT NULL default '',
+  Address varchar(60) default NULL,
+  Phone varchar(24) default NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+--
+
+ALTER TABLE restaurants DISABLE KEYS ;
+INSERT INTO restaurants VALUES (1,'來來過燒麵','台中大甲區中山路1段87號','(04) 1234-5678');
+INSERT INTO restaurants VALUES (2,'好粥道','台中大甲區中山路2段78號','(04) 8765-4321');
+
+ALTER TABLE restaurants ENABLE KEYS ;
